@@ -24,6 +24,8 @@ class HomePage extends Component {
                       <li key={book.id} >
                         <Book 
 							book={book}
+							moveShelf={this.props.moveShelf}
+							currentShelf="currentlyReading"
                         />
                       </li>
                       ))
@@ -43,6 +45,8 @@ class HomePage extends Component {
                       <li key={book.id} >
                         <Book 
 							book={book}
+							moveShelf={this.props.moveShelf}
+							currentShelf="wantToRead"
                         />
                       </li>
                       ))
@@ -62,6 +66,8 @@ class HomePage extends Component {
                       <li key={book.id} >
                         <Book 
 							book={book}
+							moveShelf={this.props.moveShelf}
+							currentShelf="read"
                         />
                       </li>
                       ))
