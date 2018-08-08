@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
 import Book from './Book';
 import { Link } from 'react-router-dom'
-import { getAll, update, search,
-} from "./Utils/BooksAPI";
+import { search } from "./Utils/BooksAPI";
 class Search extends Component {
 	state = {
 		query: '',
-		searchedBooks: []
+		booksToSearch: []
 	}
 
-	updateQuery = (query) => {
+	onSearch = (query) => {
 		this.setState({
 			query: query
 		})
-		this.updateSearchedBooks(query);
+		this.updatebooksToSearch(query);
 	}
-
-	updateSearchedBooks = (query) => {
+	//Managing the input state
+	updatebooksToSearch = (query) => {
 		if (query) {
-			search(query).then((searchedBooks) => {
-				if (searchedBooks.error) {
-					this.setState({ searchedBooks: [] });
+			search(query).then((booksToSearch) => {
+				if (booksToSearch.error) {
+					this.setState({ booksToSearch: [] });
 				} else {
-					this.setState({ searchedBooks: searchedBooks });	
+					this.setState({ booksToSearch: booksToSearch });	
 				}
 			})
 		} else {
-			this.setState({ searchedBooks: [] });
+			this.setState({ booksToSearch: [] });
 		}
 	}
 
@@ -43,26 +42,27 @@ class Search extends Component {
 	                		type="text" 
 	                		placeholder="Search by title or author"
 	                		value={this.state.query}
-	                		onChange={(event) => this.updateQuery(event.target.value)}
+	                		onChange={(event) => this.onSearch(event.target.value)}
 	                	/>
 	              	</div>
 	            </div>
 	            <div className="search-books-results">
 	              <ol className="books-grid">
 	              	{
-	              		this.state.searchedBooks.map(searchedBooks => {
+	              		this.state.booksToSearch.map(booksToSearch => {
 	              			let shelf = "none";
 
 	              			this.props.books.map(book => {
-	              				book.id === searchedBooks.id ?
+	              				book.id === booksToSearch.id ?
 	              				shelf = book.shelf : 
 	              				''
+	              				return null;	
 	              			});
 	              			
 	              			return (
-		              			<li key={searchedBooks.id}>
+		              			<li key={booksToSearch.id}>
 			              			<Book
-			              				book={searchedBooks}
+			              				book={booksToSearch}
 			              				moveShelf={this.props.moveShelf}
 			              				currentShelf={shelf}
 		              				/>

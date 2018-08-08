@@ -1,9 +1,9 @@
 {
-  "Home": "  https://frontcodeme.github.io/project7-myreads/",
+  "Home": "https://frontcodeme.github.io/project7-myreads/",
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "gh-pages": "^1.2.0",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router-dom": "^4.3.1",
@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   }
 }

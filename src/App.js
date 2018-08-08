@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-import escapeRegExp from 'escape-string-regexp';
+// import escapeRegExp from 'escape-string-regexp';
 import Search from './Search';
-import HomePage from './HomePage';
-import { getAll, update, search,
-} from "./Utils/BooksAPI";
+import ListBooks from './ListBooks';
+import { getAll, update } from "./Utils/BooksAPI";
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -12,6 +11,7 @@ class BooksApp extends React.Component {
     books: []
   }
 
+  //Get all the books before loading the component
   componentDidMount() {
     getAll().then((books) => {
       this.setState({ books: books })
@@ -33,7 +33,7 @@ class BooksApp extends React.Component {
       <div className="app">
        
        <Route exact path='/' render={() => (
-        <HomePage 
+        <ListBooks 
             books={this.state.books}
             moveShelf={this.moveShelf}
         />
