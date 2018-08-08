@@ -16,7 +16,7 @@ class Search extends Component {
 		this.updateSearchedBooks(query);
 	}
 
-	updateSearchedBooks = () => {
+	updateSearchedBooks = (query) => {
 		if (query) {
 			BooksAPI.search(query).then((searchedBooks) => {
 				if (searchedBooks.error) {
@@ -43,21 +43,22 @@ class Search extends Component {
 	                		type="text" 
 	                		placeholder="Search by title or author"
 	                		value={this.state.query}
-	                		onChange={(event) => this.update(event.target.value)}
+	                		onChange={(event) => this.updateQuery(event.target.value)}
 	                	/>
 	              	</div>
 	            </div>
 	            <div className="search-books-results">
 	              <ol className="books-grid">
 	              	{
-	              		this.State.searchedBooks.map(searchedBooks => {
+	              		this.state.searchedBooks.map(searchedBooks => {
 	              			let shelf = "none";
 
-	              			this.props.books.map(book => (
-	              				book.id === seaarchedBook.id
-	              				shelf = book.shelf :
+
+	              			this.props.books.map(book => {
+	              				book.id === searchedBooks.id ?
+	              				shelf = book.shelf : 
 	              				''
-	              				));
+	              			});
 	              			
 	              			return (
 		              			<li key={searchedBooks.id}>
