@@ -22,7 +22,7 @@ class Search extends Component {
 				if (searchedBooks.error) {
 					this.setState({ searchedBooks: [] });
 				} else {
-					this.setState({ searchedBooks: searchedBooks });					
+					this.setState({ searchedBooks: searchedBooks });	
 				}
 			})
 		} else {
@@ -50,14 +50,18 @@ class Search extends Component {
 	            <div className="search-books-results">
 	              <ol className="books-grid">
 	              	{
-	              		this.State.searchedBooks.map(searchedBooks => (
-	              			<li key={searchedBooks.id}>
-		              			<Book
-		              				book={searchedBooks}
-		              				moveShelf={this.props.moveShelf}
-	              				/>
-              				</li>
-	              			))
+	              		this.State.searchedBooks.map(searchedBooks => {
+	              			let shelf = "none";
+	              			return (
+		              			<li key={searchedBooks.id}>
+			              			<Book
+			              				book={searchedBooks}
+			              				moveShelf={this.props.moveShelf}
+			              				currentShelf={shelf}
+		              				/>
+	              				</li>
+	              			);
+	              		})
 	              	}
 	              </ol>
 	            </div>
