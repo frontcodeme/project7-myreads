@@ -19,18 +19,17 @@ class Search extends Component {
 		if (query) {
 			BooksAPI.search(query).then((searchedBooks) => {
 				if (searchedBooks.error) {
-					this.setState({ searchedBooks: [] })
+					this.setState({ searchedBooks: [] });
 				} else {
-					this.setState({ searchedBooks: searchedBooks })					
+					this.setState({ searchedBooks: searchedBooks });					
 				}
 			})
 		} else {
-			this.setState({ searchedBooks: [] })
+			this.setState({ searchedBooks: [] });
 		}
-
 	}
-	render () {
 
+	render () {
 		return (
 			<div className="search-books">
 	            <div className="search-books-bar">
@@ -47,10 +46,11 @@ class Search extends Component {
 	            <div className="search-books-results">
 	              <ol className="books-grid">
 	              	{
-	              		this.setState.searchedBooks.map(searchedBooks => (
+	              		this.State.searchedBooks.map(searchedBooks => (
 	              			<li key={searchedBooks.id}>
 		              			<Book
 		              				book={searchedBooks}
+		              				moveShelf={this.props.moveShelf}
 	              				/>
               				</li>
 	              			))
