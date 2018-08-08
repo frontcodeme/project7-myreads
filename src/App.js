@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
+import escapeRegExp from 'escape-string-regexp';
 import Search from './Search';
 import HomePage from './HomePage';
-import * as BooksAPI from './BooksAPI'
+import { getAll, update, search,
+} from "./Utils/BooksAPI";
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -11,15 +13,15 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then((books) => {
+    getAll().then((books) => {
       this.setState({ books: books })
     })
   }
 
   moveShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf);
+    update(book, shelf);
 
-    BooksAPI.getAll().then((books) => {
+    getAll().then((books) => {
       this.setState({ books: books })
     })
   }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Book from './Book';
 import { Link } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
-
+import { getAll, update, search,
+} from "./Utils/BooksAPI";
 class Search extends Component {
 	state = {
 		query: '',
@@ -18,7 +18,7 @@ class Search extends Component {
 
 	updateSearchedBooks = (query) => {
 		if (query) {
-			BooksAPI.search(query).then((searchedBooks) => {
+			search(query).then((searchedBooks) => {
 				if (searchedBooks.error) {
 					this.setState({ searchedBooks: [] });
 				} else {
@@ -52,7 +52,6 @@ class Search extends Component {
 	              	{
 	              		this.state.searchedBooks.map(searchedBooks => {
 	              			let shelf = "none";
-
 
 	              			this.props.books.map(book => {
 	              				book.id === searchedBooks.id ?

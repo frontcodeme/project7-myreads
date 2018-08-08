@@ -5,8 +5,6 @@ import Book from './Book';
 
 class HomePage extends Component {
 	render () {
-	console.log(this.props.books);
-
 		return (
 			<div className="list-books">
             <div className="list-books-title">
