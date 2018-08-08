@@ -40,7 +40,7 @@ class BooksApp extends React.Component {
       <Route path='/search' render={() => (
         <Search 
             moveShelf={this.moveShelf}
-            books={this.props.books}
+            books={this.state.books}
           />
       )}/>          
 
