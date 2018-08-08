@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Book from './Book';
 
+
 class HomePage extends Component {
 	render () {
 	console.log(this.props.books);
@@ -77,7 +78,9 @@ class HomePage extends Component {
             </div>
 
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              <Link 
+              	to="/search"
+              >Add a book</Link>
             </div>
           </div>
 			);
