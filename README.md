@@ -6,6 +6,10 @@ This project is for educational purposes as part of the Udacity web dev course.
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+* you can use yarn too
+* your localhost should display the app 'enjoy' :)
+
+# Functionality:
 
 Method Signature:
 ```js
