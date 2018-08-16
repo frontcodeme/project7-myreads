@@ -1,5 +1,5 @@
 {
-  "Home": "https://frontcodeme.github.io/project7-myreads/",
+  "home": "https://frontcodeme.github.io/project7-myreads/",
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "gh-pages": "^1.2.0",
