@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import Book from './Book';
+import React, { Component } from 'react'
+import Book from './Book'
 import { Link } from 'react-router-dom'
-import { search } from "./Utils/BooksAPI";
+import { search } from "../BooksAPI"
+
 class Search extends Component {
 	state = {
 		query: '',
@@ -12,20 +13,20 @@ class Search extends Component {
 		this.setState({
 			query: query
 		})
-		this.updatebooksToSearch(query);
+		this.updatebooksToSearch(query)
 	}
 	//Managing the input state
 	updatebooksToSearch = (query) => {
 		if (query) {
 			search(query).then((booksToSearch) => {
 				if (booksToSearch.error) {
-					this.setState({ booksToSearch: [] });
+					this.setState({ booksToSearch: [] })
 				} else {
-					this.setState({ booksToSearch: booksToSearch });	
+					this.setState({ booksToSearch: booksToSearch })
 				}
 			})
 		} else {
-			this.setState({ booksToSearch: [] });
+			this.setState({ booksToSearch: [] })
 		}
 	}
 
@@ -33,13 +34,13 @@ class Search extends Component {
 		return (
 			<div className="search-books">
 	            <div className="search-books-bar">
-	              <Link 
+	              <Link
 	              	to="/"
-	              	className="close-search" 
+	              	className="close-search"
 	              >Close</Link>
 	              	<div className="search-books-input-wrapper">
-	                	<input 
-	                		type="text" 
+	                	<input
+	                		type="text"
 	                		placeholder="Search by title or author"
 	                		value={this.state.query}
 	                		onChange={(event) => this.onSearch(event.target.value)}
@@ -50,15 +51,15 @@ class Search extends Component {
 	              <ol className="books-grid">
 	              	{
 	              		this.state.booksToSearch.map(booksToSearch => {
-	              			let shelf = "none";
+	              			let shelf = "none"
 
 	              			this.props.books.map(book => {
 	              				book.id === booksToSearch.id ?
-	              				shelf = book.shelf : 
+	              				shelf = book.shelf :
 	              				''
-	              				return null;	
-	              			});
-	              			
+	              				return null
+	              			})
+
 	              			return (
 		              			<li key={booksToSearch.id}>
 			              			<Book
@@ -67,14 +68,14 @@ class Search extends Component {
 			              				currentShelf={shelf}
 		              				/>
 	              				</li>
-	              			);
+	              			)
 	              		})
 	              	}
 	              </ol>
 	            </div>
 	      	</div>
-		);
+		)
 	}
-} 
+}
 
-export default Search;
+export default Search

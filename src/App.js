@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
 // import escapeRegExp from 'escape-string-regexp';
-import Search from './Search';
-import ListBooks from './ListBooks';
-import { getAll, update } from "./Utils/BooksAPI";
+import Search from './components/Search';
+import ListBooks from './components/ListBooks';
+import { getAll, update } from "./BooksAPI";
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -26,25 +26,25 @@ class BooksApp extends React.Component {
     })
   }
 
-  
+
 
   render() {
     return (
       <div className="app">
-       
+
        <Route exact path='/' render={() => (
-        <ListBooks 
+        <ListBooks
             books={this.state.books}
             moveShelf={this.moveShelf}
         />
       )}/>
 
       <Route path='/search' render={() => (
-        <Search 
+        <Search
             moveShelf={this.moveShelf}
             books={this.state.books}
           />
-      )}/>          
+      )}/>
 
       </div>
     )

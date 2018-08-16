@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom'
-import Book from './Book';
+import Book from './Book'
 
 function ListBooks (props) {
 	return (
@@ -20,7 +20,7 @@ function ListBooks (props) {
                 		.filter(book => book.shelf ==='currentlyReading')
                 		.map(book => (
                   <li key={book.id} >
-                    <Book 
+                    <Book
 						book={book}
 						moveShelf={props.moveShelf}
 						currentShelf="currentlyReading"
@@ -41,7 +41,7 @@ function ListBooks (props) {
             		.filter(book => book.shelf ==='wantToRead')
             		.map(book => (
               <li key={book.id} >
-                <Book 
+                <Book
 					book={book}
 					moveShelf={props.moveShelf}
 					currentShelf="wantToRead"
@@ -62,7 +62,7 @@ function ListBooks (props) {
             		.filter(book => book.shelf ==='read')
             		.map(book => (
 	              <li key={book.id} >
-	                <Book 
+	                <Book
 						book={book}
 						moveShelf={props.moveShelf}
 						currentShelf="read"
@@ -84,4 +84,4 @@ function ListBooks (props) {
     )
 }
 
-export default ListBooks;
+export default ListBooks
