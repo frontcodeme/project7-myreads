@@ -3,6 +3,26 @@ import { Link } from 'react-router-dom'
 import Book from './Book'
 
 function ListBooks (props) {
+const shelves = [
+  {  id: 'now',
+     title: 'Currently Reading',
+     shelf: 'currentlyReading',
+     currentShelf: "currentlyReading"
+   },
+
+  {  id: 'later',
+     title: 'Want to Read',
+     shelf: 'wantToRead',
+     currentShelf: "wantToRead"
+   },
+
+  {  id: 'then',
+     title: 'Read',
+     shelf: 'read',
+     currentShelf: "read"
+   }
+]
+
 	return (
 		<div className="list-books">
 	        <div className="list-books-title">
@@ -12,11 +32,9 @@ function ListBooks (props) {
         <div className="list-books-content">
           <div>
 {///////////////////////////////
-
 }
-
             <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
+              <h2 className="bookshelf-title">{shelves.title}</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   {
@@ -27,7 +45,7 @@ function ListBooks (props) {
                     <Book
             						book={book}
             						moveShelf={props.moveShelf}
-            						currentShelf="currentlyReading"
+            						currentShelf={shelves.currentShelf}
                     />
                   </li>
                   ))
